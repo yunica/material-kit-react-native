@@ -1,9 +1,10 @@
-import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE, FETCHING_DATA_PEOPLE_SUCCESS } from '../constants/actions'
+import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE, 
+    FETCHING_PROMOTIONS } from '../constants/actions'
 
 const initialState = {
-    data: [],
+    promotions: [],
     isFeching: false,
-    error: false
+    error: '',
 }
 
 export default dataReducer = (state = initialState, action) => {
@@ -11,27 +12,22 @@ export default dataReducer = (state = initialState, action) => {
         case FETCHING_DATA:
             return {
                 ...state,
-                data: [],
-                isFeching: true
-            }
-        case FETCHING_DATA_SUCCESS:
-            return {
-                ...state,
-                data: action.data,
-                isFeching: false
-            }
-        case FETCHING_DATA_PEOPLE_SUCCESS:
-            return {
-                ...state,
-                dataPeople: action.dataPeople,
-                isFeching: false
+                isFeching: true,
+                error: ''
             }
         case FETCHING_DATA_FAILURE:
+                return {
+                    ...state,
+                    isFeching: false,
+                    error: action.data
+                }
+        case FETCHING_PROMOTIONS:
             return {
                 ...state,
-                isFeching: false,
-                error: true
+                promotions: action.data,
+                isFeching: false
             }
+
         default:
             return state
     }

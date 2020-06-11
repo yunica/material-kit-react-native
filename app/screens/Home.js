@@ -7,14 +7,15 @@ import { Icon, Product } from '../components/';
 
 const { width } = Dimensions.get('screen');
 import products from '../constants/products';
-import { fetchData } from '../actions'
+import { fetchPromotions } from '../actions/promotions'
 
 class Home extends React.Component {
 
   componentDidMount() {
-    this
+
+      this
       .props
-      .fetchData()
+      .fetchPromotions();
   }
 
   renderSearch = () => {
@@ -83,14 +84,15 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    dataTvMaze: state.data
+    promotions: state.promotions
+
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => {
-      return dispatch(fetchData())
+    fetchPromotions: () => {
+      return dispatch(fetchPromotions())
     }
   }
 }
