@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
-import { Button, Block, Text, Input, theme } from 'galio-framework';
+import { Block, theme, Toast, Button } from 'galio-framework';
 import { Icon, Product } from '../../components/';
 import products from '../../constants/products';
 import { fetchPromotions } from '../../actions/promotions'
@@ -9,56 +9,31 @@ import styles from './style'
 
 
 class Home extends React.Component {
+  state = {
+    isShow: false,
+  };
 
+
+  setShow(isShow) {
+    console.warn(isShow)
+    this.setState({
+      isShow: !isShow
+    })
+  }
   componentDidMount() {
 
-      this
+    this
       .props
       .fetchPromotions();
   }
-
-  renderSearch = () => {
-    const { navigation } = this.props;
-    const iconCamera = <Icon size={16} color={theme.COLORS.MUTED} name="zoom-in" family="material" />
-
-    return (
-      <Input
-        right
-        color="black"
-        style={styles.search}
-        iconContent={iconCamera}
-        placeholder="What are you looking for?"
-        onFocus={() => navigation.navigate('Pro')}
-      />
-    )
-  }
-
-  renderTabs = () => {
-    const { navigation, data } = this.props;
-    return (
-      <Block row style={styles.tabs}>
-        <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
-          <Block row middle>
-            <Icon name="grid" family="feather" style={{ paddingRight: 8 }} />
-            <Text size={16} style={styles.tabTitle}>Categories</Text>
-          </Block>
-        </Button>
-        <Button shadowless style={styles.tab} onPress={() => navigation.navigate('profile')}>
-          <Block row middle>
-            <Icon size={16} name="camera-18" family="GalioExtra" style={{ paddingRight: 8 }} />
-            <Text size={16} style={styles.tabTitle}>Best Deals</Text>
-          </Block>
-        </Button>
-      </Block>
-    )
-  }
-
   renderProducts = () => {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.products}>
+
         <Block flex>
+
           <Product product={products[0]} horizontal />
           <Block flex row>
             <Product product={products[1]} style={{ marginRight: theme.SIZES.BASE }} />
@@ -72,9 +47,14 @@ class Home extends React.Component {
   }
 
   render() {
+    const{isShow} = this.state;
     return (
       <Block flex center style={styles.home}>
+   
         {this.renderProducts()}
+        <Button shadowless onPress={() => this.setShow(isShow)} style={{ marginBottom: 80 }}>click here for toast notifications</Button>
+        <Toast isShow={this.state.isShow} positionIndicator="top" round  color='error' textStyle={{color:'white'}}>This is a top positioned toast</Toast>
+
       </Block>
     );
   }
