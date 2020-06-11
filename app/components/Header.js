@@ -47,10 +47,9 @@ const SearchButton = ({ isWhite, style, navigation }) => (
 const PointButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
-    // name="gears"
-      family="Galio"
-      size={16}
-      name="pin-3"
+      size={15}
+      name="gears"
+      family="font-awesome"
       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
     />
     <Block middle style={styles.notify} />
@@ -217,7 +216,7 @@ const styles = StyleSheet.create({
   navbar: {
     paddingVertical: 0,
     paddingBottom: theme.SIZES.BASE * 1.5,
-    paddingTop: iPhoneX ? theme.SIZES.BASE * 4 : theme.SIZES.BASE,
+    paddingTop: iPhoneX ? theme.SIZES.BASE * 2 : theme.SIZES.BASE,
     zIndex: 5,
   },
   shadow: {

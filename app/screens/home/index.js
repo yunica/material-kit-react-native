@@ -35,7 +35,6 @@ class Home extends React.Component {
 
   renderTabs = () => {
     const { navigation, data } = this.props;
-    console.log(data)
     return (
       <Block row style={styles.tabs}>
         <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
