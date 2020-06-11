@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Button, Block, Text, Input, theme } from 'galio-framework';
 
@@ -6,8 +7,16 @@ import { Icon, Product } from '../components/';
 
 const { width } = Dimensions.get('screen');
 import products from '../constants/products';
+import { fetchData } from '../actions'
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+
+  componentDidMount() {
+    this
+      .props
+      .fetchData()
+  }
+
   renderSearch = () => {
     const { navigation } = this.props;
     const iconCamera = <Icon size={16} color={theme.COLORS.MUTED} name="zoom-in" family="material" />
@@ -23,10 +32,10 @@ export default class Home extends React.Component {
       />
     )
   }
-  
-  renderTabs = () => {
-    const { navigation } = this.props;
 
+  renderTabs = () => {
+    const { navigation, data } = this.props;
+    console.log(data)
     return (
       <Block row style={styles.tabs}>
         <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
@@ -72,9 +81,25 @@ export default class Home extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    dataTvMaze: state.data
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchData: () => {
+      return dispatch(fetchData())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
 const styles = StyleSheet.create({
   home: {
-    width: width,    
+    width: width,
   },
   search: {
     height: 48,
