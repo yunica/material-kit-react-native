@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, Image } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
-import { Block, GalioProvider } from 'galio-framework';
+import { Block, GalioProvider, Toast, Button } from 'galio-framework';
 
 import { Images, products, materialTheme } from './constants/';
 
@@ -37,9 +37,18 @@ function cacheImages(images) {
 export default class Main extends React.Component {
   state = {
     isLoadingComplete: false,
-  };
+    isShow: false,
 
+  };
+  setShow(isShow) {
+    console.warn(isShow)
+    this.setState({
+      isShow: !isShow
+    })
+  }
   render() {
+    const { isShow } = this.state;
+
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -53,8 +62,10 @@ export default class Main extends React.Component {
         <NavigationContainer>
           <GalioProvider theme={materialTheme}>
             <Block flex>
+              <Button shadowless onPress={() => this.setShow(isShow)} style={{ marginBottom: 80 }}>click here for toast notifications</Button>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <Screens />
+              <Toast isShow={this.state.isShow} positionIndicator="top"  fadeInDuration={600}  fadeOutDuration={600} round color='error' textStyle={{ color: 'white' }}>This is a top positioned toast</Toast>
             </Block>
           </GalioProvider>
         </NavigationContainer>
