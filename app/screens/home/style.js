@@ -1,3 +1,4 @@
+import { Block, Text, theme } from "galio-framework";
 import { StyleSheet,Dimensions } from 'react-native';
 const { width } = Dimensions.get('screen');
 

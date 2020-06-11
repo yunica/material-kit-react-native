@@ -2,8 +2,8 @@ import React from 'react';
 import { Easing, Animated, Dimensions } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
 import { Block, Text, theme } from "galio-framework";
+
 
 import ComponentsScreen from '../screens/Components';
 import HomeScreen from '../screens/home';
@@ -90,15 +90,13 @@ function ComponentsStack(props) {
 
 function HomeStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="screen">
+    <Stack.Navigator mode="card" headerMode="screen" initialRouteName="Home">
       <Stack.Screen 
         name="Home"
         component={HomeScreen}
         options={{
           header: ({ navigation, scene }) => (
             <Header 
-              search
-              tabs
               title="Home"
               navigation={navigation}
               scene={scene}
