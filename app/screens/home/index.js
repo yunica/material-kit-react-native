@@ -1,12 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
-import { Block, theme, Toast, Button } from 'galio-framework';
-import { Icon, Product } from '../../components/';
+import { Block, theme,  Button } from 'galio-framework';
+import {  Product } from '../../components/';
 import products from '../../constants/products';
 import { fetchPromotions } from '../../actions/promotions'
+import { toastMessage } from '../../actions/ui'
+
 import styles from './style'
 
+const ToastC = props => {
+  if (props.visible) {
+    ToastAndroid.showWithGravityAndOffset(
+      props.message,
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      25,
+      50
+    );
+    return null;
+  }
+  return null;
+};
 
 class Home extends React.Component {
   state = {
@@ -21,19 +36,20 @@ class Home extends React.Component {
     })
   }
   componentDidMount() {
-
     this
       .props
       .fetchPromotions();
   }
   renderProducts = () => {
+    const { toastMessage } = this.props;
+
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.products}>
-
         <Block flex>
 
+          <Button onPress={(err) => toastMessage( 'asdasdasdasd')}>pinchea aqui</Button>
           <Product product={products[0]} horizontal />
           <Block flex row>
             <Product product={products[1]} style={{ marginRight: theme.SIZES.BASE }} />
@@ -41,19 +57,22 @@ class Home extends React.Component {
           </Block>
           <Product product={products[3]} horizontal />
           <Product product={products[4]} full />
+
         </Block>
       </ScrollView>
     )
   }
 
   render() {
+    const { uix } = this.props;
     const{isShow} = this.state;
+
     return (
       <Block flex center style={styles.home}>
-   
         {this.renderProducts()}
-        <Button shadowless onPress={() => this.setShow(isShow)} style={{ marginBottom: 80 }}>click here for toast notifications</Button>
-        <Toast isShow={this.state.isShow} positionIndicator="top" round  color='error' textStyle={{color:'white'}}>This is a top positioned toast</Toast>
+        {/* <ToastC visible={uix.isToast} message="Example" /> */}
+
+        {/* <Toast isShow={uix.isToast} positionIndicator="top" round  color='error' textStyle={{backgroundColor:'white',alignSelf:'center'}}>This is a top positioned toast</Toast> */}
 
       </Block>
     );
@@ -62,7 +81,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    promotions: state.promotions
+    promotions: state.promotions,
+    uix: state.ui
 
   }
 }
@@ -71,6 +91,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchPromotions: () => {
       return dispatch(fetchPromotions())
+    },
+    toastMessage: (error) => {
+      return dispatch(toastMessage(error))
     }
   }
 }

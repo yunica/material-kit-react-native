@@ -2,10 +2,11 @@ import React from 'react';
 import { Platform, StatusBar, Image } from 'react-native';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
-import { Block, GalioProvider, Toast, Button } from 'galio-framework';
+import { Block, GalioProvider } from 'galio-framework';
+import { connect } from 'react-redux';
 
 import { Images, products, materialTheme } from './constants/';
-
+import CustomToast from './components/Toast'
 import { NavigationContainer } from '@react-navigation/native';
 import Screens from './navigation/Bottom';
 
@@ -34,22 +35,17 @@ function cacheImages(images) {
   });
 }
 
-export default class Main extends React.Component {
+
+class Main extends React.Component {
   state = {
     isLoadingComplete: false,
-    isShow: false,
-
   };
-  setShow(isShow) {
-    console.warn(isShow)
-    this.setState({
-      isShow: !isShow
-    })
-  }
-  render() {
-    const { isShow } = this.state;
 
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+  render() {
+    const { isLoadingComplete } = this.state;
+    const { skipLoadingScreen,uix } = this.props;
+
+    if (!isLoadingComplete && !skipLoadingScreen) {
       return (
         <AppLoading
           startAsync={this._loadResourcesAsync}
@@ -62,16 +58,17 @@ export default class Main extends React.Component {
         <NavigationContainer>
           <GalioProvider theme={materialTheme}>
             <Block flex>
-              <Button shadowless onPress={() => this.setShow(isShow)} style={{ marginBottom: 80 }}>click here for toast notifications</Button>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               <Screens />
-              <Toast isShow={this.state.isShow} positionIndicator="top"  fadeInDuration={600}  fadeOutDuration={600} round color='error' textStyle={{ color: 'white' }}>This is a top positioned toast</Toast>
+              <CustomToast visible={uix.isToast} message={uix.toastMessage} />
             </Block>
           </GalioProvider>
         </NavigationContainer>
       );
     }
   }
+
+
 
   _loadResourcesAsync = async () => {
     return Promise.all([
@@ -89,3 +86,12 @@ export default class Main extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
+
+const mapStateToProps = state => {
+  return {
+    uix: state.ui
+  }
+}
+
+
+export default connect(mapStateToProps)(Main)
