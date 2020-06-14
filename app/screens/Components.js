@@ -17,10 +17,13 @@ const { width } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 
 export default class Components extends React.Component {
-  state = {
-    'switch-1': true,
-    'switch-2': false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      'switch-1': true,
+      'switch-2': false
+    };
+  }
 
   toggleSwitch = (switchId) => this.setState({ [switchId]: !this.state[switchId] });
 

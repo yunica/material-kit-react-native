@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
-import { Block, theme, Button } from 'galio-framework';
+import { Block, theme, Text } from 'galio-framework';
 import { Product } from '../../components';
 import products from '../../constants/products';
 import { fetchPromotions } from '../../actions/promotions';
@@ -9,39 +9,36 @@ import { showToastMessage } from '../../actions/ui';
 
 import styles from './style';
 
-const arrayTo2DArray = (list, howMany) => {
-  if (!list) return [];
-  let idx = 0;
-  const result = [];
-  while (idx < list.length) {
-    if (idx % howMany === 0) result.push([]);
-    result[result.length - 1].push(list[idx++]);
-  }
-  return result;
-};
+// const arrayTo2DArray = (list, howMany) => {
+//   if (!list) return [];
+//   let idx = 0;
+//   const result = [];
+//   while (idx < list.length) {
+//     if (idx % howMany === 0) result.push([]);
+//     result[result.length - 1].push(list[idx++]);
+//   }
+//   return result;
+// };
 
 class Home extends React.Component {
   componentDidMount() {
     const { promotions } = this.props;
-    this.props.fetchPromotions();
 
-    // if (!promotions.length) {
-    // }
+    if (!promotions.length) {
+      this.props.fetchPromotions();
+    }
   }
 
   renderProducts = () => {
-    const { promotions } = this.props;
-    const promotionsBlock = arrayTo2DArray(products, 2);
-    if (!promotionsBlock.length) return null;
+    // const { promotions } = this.props;
+    // const promotionsBlock = arrayTo2DArray(products, 2);
+    // if (!promotionsBlock.length) return null;
 
     return (
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.products}>
         <Block flex>
-          {promotionsBlock.map((i, k) => (
-            <Block flex row>
-              <Product key={k} product={i[0]} />
-              <Product key={k + 100} product={i[1]} style={{ marginLeft: theme.SIZES.BASE }} />
-            </Block>
+          {products.map((i) => (
+            <Product key={i.id} product={i} horizontal />
           ))}
         </Block>
       </ScrollView>
@@ -49,15 +46,9 @@ class Home extends React.Component {
   };
 
   renderPayments = () => {
-    const { toastMessage, promotions } = this.props;
-
     return (
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.products}>
-        const {promotions} = this.props;
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex>
-          <Button onPress={() => toastMessage('error en la matrisdas asd ,asmd kasjlk jaslk djx')}>
-            pinchea aqui
-          </Button>
           <Product product={products[0]} horizontal />
           <Block flex row>
             <Product product={products[1]} style={{ marginRight: theme.SIZES.BASE }} />
@@ -74,11 +65,18 @@ class Home extends React.Component {
     return (
       <Block flex center style={styles.home}>
         {this.renderProducts()}
+        <Text bold size={16} style={styles.title}>
+          Pagos pendientes
+        </Text>
+        {this.renderPayments()}
       </Block>
     );
   }
 }
-
+// Set default props
+Home.defaultProps = {
+  promotions: []
+};
 const mapStateToProps = (state) => {
   return {
     promotions: state.promotions,

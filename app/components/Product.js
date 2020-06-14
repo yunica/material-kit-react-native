@@ -3,8 +3,6 @@ import { withNavigation } from '@react-navigation/compat';
 import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 
-import materialTheme from '../constants/Theme';
-
 const { width } = Dimensions.get('screen');
 
 class Product extends React.Component {
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     elevation: 1
   },
   image: {
-    borderRadius: 3,
+    borderRadius: 9,
     marginHorizontal: theme.SIZES.BASE / 2,
     marginTop: -16
   },

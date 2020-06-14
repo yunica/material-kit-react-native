@@ -8,7 +8,7 @@ import { Images, materialTheme } from '../constants';
 import { HeaderHeight } from '../constants/utils';
 
 const { width, height } = Dimensions.get('screen');
-const thumbMeasure = (width - 48 - 32) / 3;
+const thumbMeasure = (width - 48 - 32) / 2;
 
 export default class Profile extends React.Component {
   render() {
@@ -94,7 +94,7 @@ export default class Profile extends React.Component {
             </Block>
             <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
               <Block row space="between" style={{ flexWrap: 'wrap' }}>
-                {Images.Viewed.map((img, imgIndex) => (
+                {Images.Viewed.map((img) => (
                   <Image
                     source={{ uri: img }}
                     key={`viewed-${img}`}
