@@ -7,6 +7,7 @@ import HomeScreen from '../screens/home';
 import Profile from '../screens/Profile';
 import ProScreen from '../screens/Pro';
 import SettingsScreen from '../screens/Settings';
+import Login from '../screens/login';
 
 import { Icon } from '../components';
 import { materialTheme } from '../constants';
@@ -65,7 +66,7 @@ export default function bottomTabsStack(props) {
       />
       <Tab.Screen
         name="Home1"
-        component={homeStackScreen}
+        component={Login}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
