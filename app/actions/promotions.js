@@ -1,6 +1,8 @@
 import axios from 'axios';
-import { getData, getDateFailure } from './index';
+import { getData, getDataFailure } from './index';
 import { FETCHING_PROMOTIONS } from '../constants/actions';
+
+import { showToastMessage } from './ui';
 
 const URL_TEMP = 'https://jsonplaceholder.typicode.com';
 
@@ -17,7 +19,8 @@ export const fetchPromotions = () => {
         dispatch(getPromotions(data));
       })
       .catch(() => {
-        dispatch(getDateFailure('Ocurrio un error'));
+        dispatch(getDataFailure());
+        dispatch(showToastMessage('Ocurrio un error al buscar promosiones'));
       });
   };
 };

@@ -16,7 +16,7 @@ export default class CustomToast extends Component {
     this.timerID && clearTimeout(this.timerID);
   }
 
-  ShowToastFunction(message = 'Custom React Native Toast', duration = 1500) {
+  ShowToastFunction(message = 'Ups, ocurrio un error', duration = 1500) {
     this.ToastMessage = message;
 
     this.setState({ ShowToast: true }, () => {
@@ -70,8 +70,8 @@ CustomToast.propTypes = {
 };
 
 CustomToast.defaultProps = {
-  backgroundColor: '#f00',
-  textColor: '#FFFFFF',
+  backgroundColor: '#ec897e',
+  textColor: '#631911',
   position: 'top'
 };
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
     paddingHorizontal: 25,
     paddingVertical: 10,
-
+    width: 'auto',
     borderRadius: 25,
     zIndex: 9999,
     position: 'absolute',

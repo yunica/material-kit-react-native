@@ -8,6 +8,6 @@ export const getData = () => {
   return { type: FETCHING_DATA };
 };
 
-export const getDateFailure = (data) => {
-  return { type: FETCHING_DATA_FAILURE, data };
+export const getDataFailure = () => {
+  return { type: FETCHING_DATA_FAILURE };
 };

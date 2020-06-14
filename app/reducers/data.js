@@ -2,8 +2,7 @@ import { FETCHING_DATA, FETCHING_DATA_FAILURE, FETCHING_PROMOTIONS } from '../co
 
 const initialState = {
   promotions: [],
-  isFeching: false,
-  error: ''
+  isFeching: false
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -11,15 +10,13 @@ const dataReducer = (state = initialState, action) => {
     case FETCHING_DATA:
       return {
         ...state,
-        isFeching: true,
-        error: ''
+        isFeching: true
       };
     case FETCHING_DATA_FAILURE:
       return {
         ...state,
         promotions: [],
-        isFeching: false,
-        error: action.data
+        isFeching: false
       };
     case FETCHING_PROMOTIONS:
       return {
