@@ -43,8 +43,8 @@ class Login extends React.Component {
                     </Text>
                   </Block>
                 </Block>
-                <Block flex={2} center space="evenly">
-                  <Block flex midle>
+                <Block flex={2} center style={{ zIndex: 3 }} space="evenly">
+                  <Block flex top style={{ marginBottom: 2 }}>
                     <Input
                       rounded
                       type="email-address"
@@ -71,7 +71,7 @@ class Login extends React.Component {
                       Forgot your password?
                     </Text>
                   </Block>
-                  <Block flex bottom>
+                  <Block flex>
                     <Button
                       round
                       color={materialTheme.COLORS.BUTTON_COLOR}
