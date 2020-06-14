@@ -16,8 +16,7 @@ export default class GaButton extends React.Component {
           end={{ x: 1, y: 0 }}
           locations={[0.2, 1]}
           style={[styles.gradient, style]}
-          colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}
-        >
+          colors={[materialTheme.COLORS.GRADIENT_START, materialTheme.COLORS.GRADIENT_END]}>
           <Button color="transparent" style={[styles.gradient, style]} {...props}>
             <Text color={theme.COLORS.WHITE}>{children}</Text>
           </Button>
@@ -25,15 +24,13 @@ export default class GaButton extends React.Component {
       );
     }
 
-    return (
-      <Button {...props}>{children}</Button>
-    );
+    return <Button {...props}>{children}</Button>;
   }
 }
 
 const styles = StyleSheet.create({
   gradient: {
     borderWidth: 0,
-    borderRadius: theme.SIZES.BASE * 2,
-  },
+    borderRadius: theme.SIZES.BASE * 2
+  }
 });

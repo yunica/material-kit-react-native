@@ -8,7 +8,7 @@ export const hiddeToast = () => {
   return { type: HIDDE_TOAST };
 };
 
-export const toastMessage = (data) => {
+export const showToastMessage = (data) => {
   return (dispatch) => {
     return dispatch(showToast(data));
   };

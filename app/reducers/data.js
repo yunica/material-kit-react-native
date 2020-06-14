@@ -17,6 +17,7 @@ const dataReducer = (state = initialState, action) => {
     case FETCHING_DATA_FAILURE:
       return {
         ...state,
+        promotions: [],
         isFeching: false,
         error: action.data
       };

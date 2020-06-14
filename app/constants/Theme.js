@@ -19,9 +19,9 @@ export default {
     PRICE_COLOR: '#EAD5FB',
     BORDER_COLOR: '#E7E7E7',
     BLOCK: '#E7E7E7',
-    ICON: '#4A4A4A',
+    ICON: '#4A4A4A'
   },
   SIZES: {
-    BLOCK_SHADOW_RADIUS: 2,
+    BLOCK_SHADOW_RADIUS: 2
   }
 };

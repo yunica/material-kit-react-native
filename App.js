@@ -1,9 +1,9 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import Main from './app/main';
-import configureStore from './app/configureStore'
+import configureStore from './app/configureStore';
 
-let store = configureStore()
+const store = configureStore();
 
 export default class App extends React.Component {
   render() {
@@ -11,7 +11,6 @@ export default class App extends React.Component {
       <Provider store={store}>
         <Main />
       </Provider>
-
     );
   }
 }

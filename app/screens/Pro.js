@@ -2,10 +2,10 @@ import React from 'react';
 import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform } from 'react-native';
 import { Block, Button, Text, theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Images, materialTheme } from '../constants';
+import { HeaderHeight } from '../constants/utils';
 
 const { height, width } = Dimensions.get('screen');
-import { Images, materialTheme } from '../constants/';
-import { HeaderHeight } from "../constants/utils";
 
 export default class Pro extends React.Component {
   render() {
@@ -17,38 +17,48 @@ export default class Pro extends React.Component {
         <Block flex>
           <ImageBackground
             source={{ uri: Images.Pro }}
-            style={{ height: height / 1.8, width, zIndex: 1 }}
-          >
-          <LinearGradient
-            style={styles.gradient}
-            colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} />
+            style={{ height: height / 1.8, width, zIndex: 1 }}>
+            <LinearGradient style={styles.gradient} colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} />
           </ImageBackground>
           <Block space="between" style={styles.padded}>
             <Block>
-              <Block >
+              <Block>
                 <Block>
-                  <Text color="white" size={60}>Unlock</Text>
+                  <Text color="white" size={60}>
+                    Unlock
+                  </Text>
                 </Block>
                 <Block>
-                  <Text color="white" size={60}>Material</Text>
+                  <Text color="white" size={60}>
+                    Material
+                  </Text>
                 </Block>
                 <Block row>
-                  <Text color="white" size={60}>Kit</Text>
+                  <Text color="white" size={60}>
+                    Kit
+                  </Text>
                   <Block middle style={styles.pro}>
-                    <Text size={16} color="white">PRO</Text>
+                    <Text size={16} color="white">
+                      PRO
+                    </Text>
                   </Block>
                 </Block>
               </Block>
-              <Text size={16} color='rgba(255,255,255,0.6)'>
-                Take advantage of all the features and screens made upon Galio Design System, coded on React Native for both.
+              <Text size={16} color="rgba(255,255,255,0.6)">
+                Take advantage of all the features and screens made upon Galio Design System, coded
+                on React Native for both.
               </Text>
-              <Block row style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
+              <Block
+                row
+                style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
                 <Image
                   source={require('../assets/images/ios.png')}
-                  style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }} />
+                  style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }}
+                />
                 <Image
                   source={require('../assets/images/android.png')}
-                  style={{ height: 38, width: 140 }} />
+                  style={{ height: 38, width: 140 }}
+                />
               </Block>
               <Button
                 shadowless
@@ -68,19 +78,19 @@ export default class Pro extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.COLORS.BLACK,
-    marginTop: Platform.OS === 'android' ? -HeaderHeight : 0,
+    marginTop: Platform.OS === 'android' ? -HeaderHeight : 0
   },
   padded: {
     paddingHorizontal: theme.SIZES.BASE * 2,
     zIndex: 3,
     position: 'absolute',
-    bottom: Platform.OS === 'android' ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3,
+    bottom: Platform.OS === 'android' ? theme.SIZES.BASE * 2 : theme.SIZES.BASE * 3
   },
   button: {
     width: width - theme.SIZES.BASE * 4,
     height: theme.SIZES.BASE * 3,
     shadowRadius: 0,
-    shadowOpacity: 0,
+    shadowOpacity: 0
   },
   pro: {
     backgroundColor: materialTheme.COLORS.LABEL,
@@ -95,6 +105,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: 66,
-  },
+    height: 66
+  }
 });

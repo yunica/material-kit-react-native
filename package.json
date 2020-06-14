@@ -7,7 +7,9 @@
     "ios": "cross-env REACT_EDITOR=code expo start --ios",
     "web": "cross-env REACT_EDITOR=code expo start --web",
     "eject": "expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "test": "node ./node_modules/jest/bin/jest.js --watchAll",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix"
   },
   "jest": {
     "preset": "jest-expo"
@@ -35,7 +37,7 @@
     "react-native-modal-dropdown": "~0.7.0",
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
-    "react-native-screens": "~2.2.0",
+    "react-native-screens": "^2.8.0",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
