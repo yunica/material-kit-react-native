@@ -10,7 +10,10 @@ export default class Settings extends React.Component {
     this.state = {};
   }
 
-  toggleSwitch = (switchNumber) => this.setState({ [switchNumber]: !this.state[switchNumber] });
+  toggleSwitch = (switchId) => {
+    const stateSwitch = this.state[switchId];
+    this.setState({ [switchId]: !stateSwitch });
+  };
 
   renderItem = ({ item }) => {
     const { navigate } = this.props.navigation;

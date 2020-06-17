@@ -13,14 +13,12 @@ const defaultMenu = [
 ];
 
 export default class MenuHorizontal extends React.Component {
-  static defaultProps = {
-    data: defaultMenu,
-    initialIndex: null
-  };
-
-  state = {
-    active: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: null
+    };
+  }
 
   componentDidMount() {
     const { initialIndex } = this.props;
@@ -113,6 +111,11 @@ export default class MenuHorizontal extends React.Component {
     return <Block style={[styles.container, styles.shadow]}>{this.renderMenu()}</Block>;
   }
 }
+
+MenuHorizontal.defaultProps = {
+  data: defaultMenu,
+  initialIndex: null
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
-import { Block, Text, Icon, theme } from 'galio-framework';
 
 export default class DropDown extends React.Component {
-  state = {
-    value: 1
-  };
+  constructor() {
+    super();
+    this.state = {
+      value: 1
+    };
+    this.ToastMessage = '';
+  }
 
   handleOnSelect = (index, value) => {
     const { onSelect } = this.props;

@@ -25,7 +25,10 @@ export default class Components extends React.Component {
     };
   }
 
-  toggleSwitch = (switchId) => this.setState({ [switchId]: !this.state[switchId] });
+  toggleSwitch = (switchId) => {
+    const stateSwitch = this.state[switchId];
+    this.setState({ [switchId]: !stateSwitch });
+  };
 
   renderButtons = () => {
     return (

@@ -8,8 +8,8 @@
     "web": "cross-env REACT_EDITOR=code expo start --web",
     "eject": "expo eject",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix"
+    "lint": "eslint ./app",
+    "lint:fix": "eslint  ./app --fix"
   },
   "jest": {
     "preset": "jest-expo"
