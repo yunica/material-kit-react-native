@@ -1,10 +1,11 @@
 import React from 'react';
-import { Alert, Dimensions, KeyboardAvoidingView, StatusBar, ImageBackground } from 'react-native';
+import { connect } from 'react-redux';
+import { Dimensions, KeyboardAvoidingView, StatusBar, ImageBackground } from 'react-native';
 import { Block, Button, Input, Text, theme } from 'galio-framework';
 
 import materialTheme from '../../constants/Theme';
 import Images from '../../constants/Images';
-
+import { fetchUser } from '../../actions/auth';
 import styles from './style';
 
 const { width } = Dimensions.get('window');
@@ -75,7 +76,7 @@ class Login extends React.Component {
                     <Button
                       round
                       color={materialTheme.COLORS.BUTTON_COLOR}
-                      onPress={() => navigation.push('App')}>
+                      onPress={() => this.props.fetchUserAct()}>
                       Sign in
                     </Button>
                     <Button
@@ -97,4 +98,21 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+Login.defaultProps = {
+  user: null
+};
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUserAct: () => {
+      return dispatch(fetchUser(true));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

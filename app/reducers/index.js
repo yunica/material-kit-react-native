@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 // import tabBarReducer from './tabBar.reducer'
 import dataReducer from './data';
-import dataReducerUI from './ui';
+import uiReducer from './ui';
+import authReducer from './auth';
 
 export default combineReducers({
   // tabId: tabBarReducer,
   data: dataReducer,
-  ui: dataReducerUI
+  ui: uiReducer,
+  auth: authReducer
 });
