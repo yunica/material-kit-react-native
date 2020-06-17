@@ -126,6 +126,8 @@ class DrawerItem extends React.Component {
   render() {
     const { focused, title, navigation } = this.props;
     const proScreen = proScreens.includes(title);
+    const proScreenCalc = proScreen ? materialTheme.COLORS.MUTED : 'black';
+
     return (
       <TouchableOpacity
         style={{ height: 55 }}
@@ -140,9 +142,7 @@ class DrawerItem extends React.Component {
             {this.renderIcon()}
           </Block>
           <Block row center flex={0.9}>
-            <Text
-              size={18}
-              color={focused ? 'white' : proScreen ? materialTheme.COLORS.MUTED : 'black'}>
+            <Text size={18} color={focused ? 'white' : proScreenCalc}>
               {title}
             </Text>
             {this.renderLabel()}

@@ -5,9 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ComponentsScreen from '../screens/Components';
 import HomeScreen from '../screens/home';
 import Profile from '../screens/Profile';
-import ProScreen from '../screens/Pro';
 import SettingsScreen from '../screens/Settings';
-import Login from '../screens/login';
 
 import { Icon } from '../components';
 import { materialTheme } from '../constants';
@@ -41,7 +39,7 @@ function ProfileScreenStackScreen() {
 }
 const Tab = createBottomTabNavigator();
 
-function bottomTabsStack() {
+const bottomTabsStack = () => {
   return (
     <Tab.Navigator
       mode="card"
@@ -66,7 +64,7 @@ function bottomTabsStack() {
       />
       <Tab.Screen
         name="Home1"
-        component={Login}
+        component={SettingsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Icon
@@ -122,5 +120,5 @@ function bottomTabsStack() {
       />
     </Tab.Navigator>
   );
-}
+};
 export default bottomTabsStack;

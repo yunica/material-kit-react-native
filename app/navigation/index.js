@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import AuthStackScreen from './auth';
-import AppScreams from './Bottom';
+import AppScreams from './app';
 
 const RootStack = createStackNavigator();
 

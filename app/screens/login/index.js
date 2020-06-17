@@ -13,10 +13,7 @@ const { width } = Dimensions.get('window');
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '-',
-      password: '-'
-    };
+    this.state = {};
   }
 
   handleChange = (name, value) => {
@@ -25,7 +22,6 @@ class Login extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const { email, password } = this.state;
 
     return (
       <Block flex style={{ backgroundColor: theme.COLORS.BLACK }}>

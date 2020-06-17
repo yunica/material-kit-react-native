@@ -20,6 +20,10 @@
     "react/prop-types": [0], 
     "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
     "react/no-string-refs": [0],
+    "react/jsx-props-no-spreading": [1, {
+      "custom": "ignore",
+      "explicitSpread": "ignore" 
+    }],
     "quotes": ["error","single",
       { "avoidEscape": true, "allowTemplateLiterals": false }
     ],

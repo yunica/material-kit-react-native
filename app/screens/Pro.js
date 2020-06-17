@@ -4,6 +4,8 @@ import { Block, Button, Text, theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Images, materialTheme } from '../constants';
 import { HeaderHeight } from '../constants/utils';
+import iosImage from '../assets/images/ios.png';
+import andImage from '../assets/images/android.png';
 
 const { height, width } = Dimensions.get('screen');
 
@@ -52,13 +54,10 @@ export default class Pro extends React.Component {
                 row
                 style={{ marginTop: theme.SIZES.BASE * 1.5, marginBottom: theme.SIZES.BASE * 4 }}>
                 <Image
-                  source={require('../assets/images/ios.png')}
+                  source={iosImage}
                   style={{ height: 38, width: 82, marginRight: theme.SIZES.BASE * 1.5 }}
                 />
-                <Image
-                  source={require('../assets/images/android.png')}
-                  style={{ height: 38, width: 140 }}
-                />
+                <Image source={andImage} style={{ height: 38, width: 140 }} />
               </Block>
               <Button
                 shadowless

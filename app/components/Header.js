@@ -65,7 +65,6 @@ class Header extends React.Component {
 
   renderRight = () => {
     const { white, title, navigation } = this.props;
-
     if (title === 'Title') {
       return [
         <ChatButton key="chat-title" navigation={navigation} isWhite={white} />,
@@ -118,6 +117,7 @@ class Header extends React.Component {
       default:
         break;
     }
+    return null;
   };
 
   renderSearch = () => {
@@ -178,7 +178,7 @@ class Header extends React.Component {
   };
 
   render() {
-    const { back, title, white, transparent, navigation } = this.props;
+    const { back, title, white, transparent } = this.props;
     // const { routeName } = navigation.state;
     const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
     const headerStyles = [

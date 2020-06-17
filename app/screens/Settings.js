@@ -5,7 +5,10 @@ import { Block, Text, theme, Icon } from 'galio-framework';
 import materialTheme from '../constants/Theme';
 
 export default class Settings extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   toggleSwitch = (switchNumber) => this.setState({ [switchNumber]: !this.state[switchNumber] });
 
@@ -43,6 +46,7 @@ export default class Settings extends React.Component {
       default:
         break;
     }
+    return null;
   };
 
   render() {
@@ -67,7 +71,7 @@ export default class Settings extends React.Component {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.settings}>
         <FlatList
           data={recommended}
-          keyExtractor={(item, index) => item.id}
+          keyExtractor={(item) => item.id}
           renderItem={this.renderItem}
           ListHeaderComponent={
             <Block style={styles.title}>
@@ -88,11 +92,7 @@ export default class Settings extends React.Component {
             These are also important settings
           </Text>
         </Block>
-        <FlatList
-          data={payment}
-          keyExtractor={(item, index) => item.id}
-          renderItem={this.renderItem}
-        />
+        <FlatList data={payment} keyExtractor={(item) => item.id} renderItem={this.renderItem} />
         <Block style={styles.title}>
           <Text bold center size={theme.SIZES.BASE} style={{ paddingBottom: 5 }}>
             Privacy Settings
@@ -101,11 +101,7 @@ export default class Settings extends React.Component {
             Third most important settings
           </Text>
         </Block>
-        <FlatList
-          data={privacy}
-          keyExtractor={(item, index) => item.id}
-          renderItem={this.renderItem}
-        />
+        <FlatList data={privacy} keyExtractor={(item) => item.id} renderItem={this.renderItem} />
       </ScrollView>
     );
   }

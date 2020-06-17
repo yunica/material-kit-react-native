@@ -330,7 +330,7 @@ export default class Components extends React.Component {
             </Text>
           </Block>
           <Block row space="between" style={{ marginTop: theme.SIZES.BASE, flexWrap: 'wrap' }}>
-            {Images.Viewed.map((img, index) => (
+            {Images.Viewed.map((img) => (
               <Block key={`viewed-${img}`} style={styles.shadow}>
                 <Image resizeMode="cover" source={{ uri: img }} style={styles.albumThumb} />
               </Block>
@@ -398,9 +398,6 @@ const styles = StyleSheet.create({
   },
   inputDefault: {
     borderBottomColor: materialTheme.COLORS.PLACEHOLDER
-  },
-  inputTheme: {
-    borderBottomColor: materialTheme.COLORS.PRIMARY
   },
   inputTheme: {
     borderBottomColor: materialTheme.COLORS.PRIMARY
