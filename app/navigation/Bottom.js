@@ -41,7 +41,7 @@ function ProfileScreenStackScreen() {
 }
 const Tab = createBottomTabNavigator();
 
-export default function bottomTabsStack(props) {
+export default function bottomTabsStack() {
   return (
     <Tab.Navigator
       mode="card"

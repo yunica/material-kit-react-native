@@ -66,7 +66,7 @@ class Login extends React.Component {
                     <Text
                       color={theme.COLORS.WHITE}
                       size={theme.SIZES.FONT * 0.75}
-                      onPress={() => Alert.alert('Not implemented')}
+                      onPress={() => navigation.navigate('ForgotPassword')}
                       style={{ alignSelf: 'flex-end', lineHeight: theme.SIZES.FONT * 2 }}>
                       Forgot your password?
                     </Text>
@@ -75,15 +75,13 @@ class Login extends React.Component {
                     <Button
                       round
                       color={materialTheme.COLORS.BUTTON_COLOR}
-                      onPress={() =>
-                        Alert.alert('Sign in action', `Email: ${email} Password: ${password}`)
-                      }>
+                      onPress={() => navigation.push('App')}>
                       Sign in
                     </Button>
                     <Button
                       color="transparent"
                       shadowless
-                      onPress={() => navigation.navigate('Register')}>
+                      onPress={() => navigation.navigate('CreateAccount')}>
                       <Text center color={theme.COLORS.WHITE} size={theme.SIZES.FONT * 0.75}>
                         Don't have an account? Sign Up
                       </Text>

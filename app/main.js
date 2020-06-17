@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { enableScreens } from 'react-native-screens';
 import { Images, products, materialTheme } from './constants';
 import CustomToast from './components/Toast';
-import Screens from './navigation/Bottom';
+import Screens from './navigation';
 
 // Before rendering any navigation stack
 
