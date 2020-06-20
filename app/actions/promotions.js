@@ -4,7 +4,7 @@ import { FETCHING_PROMOTIONS } from '../constants/actions';
 
 import { showToastMessage } from './ui';
 
-const URL_TEMP = 'https://jsonplaceholder.typicode.com';
+const URL_TEMP = process.env.API_URL;
 
 export const getPromotions = (data) => {
   return { type: FETCHING_PROMOTIONS, data };
